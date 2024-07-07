@@ -63,6 +63,10 @@ def process_image():
         print(f"Error in process_image: {str(e)}")
         traceback.print_exc()
         return jsonify({'error': f'An error occurred: {str(e)}'}), 500
+    
+@app.route('/')
+def home():
+    return "HueMagik Backend is running!"
 
 @app.route('/test', methods=['GET'])
 def test():
