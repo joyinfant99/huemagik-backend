@@ -9,7 +9,14 @@ import traceback
 print("Starting HueMagik backend...")
 
 app = Flask(__name__)
-CORS(app, resources={r"/*": {"origins": ["https://joyinfant99.github.io", "http://localhost:3000"]}})  # Allow all origins for now, restrict in production
+CORS(app, resources={r"/*": {"origins": ["https://joyinfant99.github.io","https://cors-anywhere.herokuapp.com", "http://localhost:3000","*"]}})  # Allow all origins for now, restrict in production
+CORS(app, resources={r"/*": {
+    "origins": ["https://joyinfant99.github.io", "https://cors-anywhere.herokuapp.com", "http://localhost:3000"],
+    "methods": ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    "allow_headers": ["Content-Type", "Authorization"],
+    "expose_headers": ["Access-Control-Allow-Origin"],
+    "supports_credentials": True
+}})
 
 def get_colors(image, number_of_colors):
     try:
